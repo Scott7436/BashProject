@@ -19,6 +19,10 @@ if [ -f "$logfile" ]; then
     echo "File Permissions: $(stat -c %A "$logfile")"
     echo "Created: $(stat -c %x "$logfile")"
     echo "Last Modified: $(stat -c %y "$logfile")"
+
+    # Count the number of errors in the log file
+    error_count=$(grep -c "ERROR" "$logfile")
+    echo "Error Count: $error_count"
 else
     # Display error message
     echo "Error: Log file does not exist."
